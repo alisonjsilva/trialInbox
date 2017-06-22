@@ -1,4 +1,4 @@
- 
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -72,10 +72,10 @@
 
 // Attach a submit handler to the form
 $( ".addToCart" ).submit(function( event ) {
- 
+
   // Stop form from submitting normally
   event.preventDefault();
- 
+
   // Get some values from elements on the page:
   var $form = $( this ),
     product = $form.find( "input[name='product']" ).val(),
@@ -83,28 +83,28 @@ $( ".addToCart" ).submit(function( event ) {
     token = $form.find( "input[name='_token']" ).val(),
     url = $form.attr( "action" ),
     btn = $form.find('.btnAddToCart');
-    
+
     btn.button('loading');
 
   // Send the data using post
-  var posting = $.ajax( 
-    url, 
-    { 
+  var posting = $.ajax(
+    url,
+    {
       type: "POST",
       beforeSend: function (xhr) {
           var token = $('meta[name="csrf_token"]').attr('content');
-    
+
           if (token) {
                 return xhr.setRequestHeader('X-CSRF-TOKEN', token);
           }
       },
       data: {
-        product: product, 
-        amount: amount, 
-        token_: token  
+        product: product,
+        amount: amount,
+        token_: token
       }
   });
-  
+
   posting.success(function( data ) {
     var content = $( data );
     if($(data).length > 0){
@@ -118,11 +118,11 @@ $( ".addToCart" ).submit(function( event ) {
       });
     }
   });
- 
+
 });
-    
+
   });
-  
+
   @if(isset($error))
     alert("{{$error}}");
   @endif

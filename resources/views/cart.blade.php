@@ -57,6 +57,7 @@
     </tbody>
   </table>
   <form action="/order" method="post" accept-charset="UTF-8">
+    {!! csrf_field() !!}
     <button class="btn btn-block btn-primary btn-large">Buy</button>
   </form>
 </div>

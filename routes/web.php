@@ -28,3 +28,4 @@ Route::post('/cart/add', array('before'=>'auth.basic','uses'=>'CartController@po
 Route::get('/cart/delete/{id}', array('as'=>'delete_product_from_cart','uses'=>'CartController@getDelete'))->middleware('checkLogin');
 
 Route::post('/send', 'EmailController@send');
+Route::post('/order', 'OrderController@placeOrder')->middleware('checkLogin');
